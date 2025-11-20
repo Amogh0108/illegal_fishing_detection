@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Indian EEZ",
+        "country": "India"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              68.0,
+              6.0
+            ],
+            [
+              88.0,
+              6.0
+            ],
+            [
+              88.0,
+              22.0
+            ],
+            [
+              68.0,
+              22.0
+            ],
+            [
+              68.0,
+              6.0
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

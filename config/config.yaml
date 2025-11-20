@@ -1,0 +1,58 @@
+# IUU Fishing Detection Configuration
+
+# Data paths
+data:
+  ais_data: "data/raw/ais_data.csv"
+  eez_boundary: "data/raw/indian_eez.geojson"
+  vessel_registry: "data/raw/vessel_registry.csv"
+  output_dir: "data/processed/"
+
+# EEZ Configuration
+eez:
+  country: "India"
+  buffer_nm: 200  # nautical miles
+
+# Feature Engineering
+features:
+  behavior:
+    speed_window: 10  # points for rolling stats
+    loitering_radius_km: 5
+    loitering_time_hours: 2
+    fishing_speed_min: 1  # knots
+    fishing_speed_max: 5  # knots
+  transmission:
+    max_gap_minutes: 60
+    mmsi_change_threshold: 3
+
+# Model Configuration
+models:
+  random_forest:
+    n_estimators: 200
+    max_depth: 20
+    random_state: 42
+  svm:
+    kernel: "rbf"
+    C: 1.0
+  isolation_forest:
+    contamination: 0.1
+    random_state: 42
+  lstm:
+    hidden_size: 128
+    num_layers: 2
+    dropout: 0.3
+    epochs: 50
+    batch_size: 32
+
+# Anomaly Detection
+anomaly:
+  threshold: 0.7  # confidence score
+  ensemble_weights:
+    supervised: 0.4
+    unsupervised: 0.3
+    sequential: 0.3
+
+# Dashboard
+dashboard:
+  host: "0.0.0.0"
+  port: 9090
+  update_interval: 300  # seconds
